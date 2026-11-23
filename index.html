@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="CASPAM University Examination Portal">
+  <title>CASPAM | University Exam Portal</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="site-shell">
+    <aside class="sidebar" id="sidebar">
+      <div class="brand">
+        <div class="brand-mark">C</div>
+        <div><strong>CASPAM</strong><small>EXAM PORTAL</small></div>
+      </div>
+      <div class="nav-label">MAIN MENU</div>
+      <nav class="nav-menu">
+        <button class="nav-link active" data-section="dashboard"><span>▦</span> Dashboard</button>
+        <button class="nav-link" data-section="schedule"><span>▤</span> Exam Schedule</button>
+        <button class="nav-link" data-section="subjects"><span>▣</span> Subjects & Exams</button>
+        <button class="nav-link" data-section="results"><span>▥</span> My Results</button>
+      </nav>
+      <div class="sidebar-bottom">
+        <div class="help-card"><div class="help-icon">?</div><strong>Need help?</strong><p>Contact your exam coordinator for assistance.</p></div>
+        <div class="sidebar-foot">Centre for Advanced Studies<br>in Pure and Applied Mathematics</div>
+      </div>
+    </aside>
+
+    <main class="main-area">
+      <header class="topbar">
+        <button class="menu-toggle" id="menuToggle" aria-label="Toggle menu">☰</button>
+        <div class="breadcrumb">CASPAM <span>/</span> <b id="pageName">Dashboard</b></div>
+        <div class="top-actions">
+          <div class="live-clock"><span class="live-dot"></span><span id="clock">--:--:--</span><small id="todayDate">Loading date...</small></div>
+          <div class="avatar" id="avatarInitial">S</div>
+        </div>
+      </header>
+
+      <section class="page-section active" id="dashboard">
+        <div class="hero">
+          <div class="hero-overlay"></div>
+          <div class="hero-content">
+            <span class="eyebrow">CENTRE FOR ADVANCED STUDIES</span>
+            <h1>Welcome to <em>CASPAM</em><br>Examination Portal</h1>
+            <p>Your academic journey, examination schedule and results — all in one place.</p>
+            <button class="btn btn-light" data-go="subjects">Explore Examinations <span>→</span></button>
+          </div>
+          <div class="hero-tag">PURE & APPLIED<br><b>MATHEMATICS</b></div>
+        </div>
+
+        <div class="welcome-row">
+          <div><p class="section-kicker">STUDENT OVERVIEW</p><h2>Good day, <span id="welcomeName">Student</span> 👋</h2><p class="muted">Here is your examination activity at a glance.</p></div>
+          <button class="btn btn-outline" id="editProfile">Edit profile</button>
+        </div>
+
+        <div class="stats-grid">
+          <article class="stat-card"><div class="stat-icon purple">▣</div><div><span>Total Subjects</span><strong id="subjectCount">5</strong><small>Available for practice</small></div></article>
+          <article class="stat-card"><div class="stat-icon blue">◷</div><div><span>Upcoming Exams</span><strong id="upcomingCount">3</strong><small>Sample schedule</small></div></article>
+          <article class="stat-card"><div class="stat-icon green">✓</div><div><span>Exams Completed</span><strong id="completedCount">0</strong><small>Your practice history</small></div></article>
+          <article class="stat-card"><div class="stat-icon orange">★</div><div><span>Average Score</span><strong id="averageScore">—</strong><small>Across completed exams</small></div></article>
+        </div>
+
+        <div class="dashboard-grid">
+          <article class="panel next-exam">
+            <div class="panel-heading"><div><p class="section-kicker">STAY PREPARED</p><h3>Next Practice Session</h3></div><span class="pill pill-purple">Coming up</span></div>
+            <div class="next-subject"><div class="subject-symbol math">∑</div><div><strong>Mathematics</strong><span>Practice examination</span></div></div>
+            <div class="countdown-wrap"><span>Countdown to your next session</span><div class="countdown" id="countdown"><div><b id="cdDays">00</b><small>Days</small></div><i>:</i><div><b id="cdHours">00</b><small>Hours</small></div><i>:</i><div><b id="cdMins">00</b><small>Minutes</small></div><i>:</i><div><b id="cdSecs">00</b><small>Seconds</small></div></div></div>
+            <p class="tiny-note">Countdown uses the sample session date configured in this demo.</p>
+            <button class="btn btn-primary" data-go="subjects">Start a practice exam <span>→</span></button>
+          </article>
+          <article class="panel schedule-panel">
+            <div class="panel-heading"><div><p class="section-kicker">YOUR PLAN</p><h3>Upcoming Schedule</h3></div><button class="text-button" data-go="schedule">View all →</button></div>
+            <div class="mini-schedule" id="miniSchedule"></div>
+          </article>
+        </div>
+        <div class="panel quick-panel"><div><p class="section-kicker">READY TO LEARN?</p><h3>Choose a subject and test your knowledge.</h3><p class="muted">Each practice exam includes a timer, instant scoring and explanations for every answer.</p></div><button class="btn btn-primary" data-go="subjects">View all subjects →</button></div>
+      </section>
+
+      <section class="page-section" id="schedule">
+        <div class="page-heading"><div><p class="section-kicker">PLAN AHEAD</p><h2>Examination Schedule</h2><p class="muted">Review the sample practice timetable below.</p></div></div>
+        <div class="panel table-panel"><div class="table-scroll"><table><thead><tr><th>DATE</th><th>SUBJECT</th><th>SESSION</th><th>DURATION</th><th>STATUS</th></tr></thead><tbody id="scheduleRows"></tbody></table></div></div>
+        <p class="notice">Note: These are demonstration dates and timings. Replace them with the official CASPAM examination timetable before publishing for real students.</p>
+      </section>
+
+      <section class="page-section" id="subjects">
+        <div class="page-heading"><div><p class="section-kicker">TEST YOUR KNOWLEDGE</p><h2>Subjects & Practice Exams</h2><p class="muted">Select any subject to begin a short multiple-choice practice test.</p></div></div>
+        <div class="subject-grid" id="subjectGrid"></div>
+      </section>
+
+      <section class="page-section" id="results">
+        <div class="page-heading"><div><p class="section-kicker">YOUR PERFORMANCE</p><h2>My Results</h2><p class="muted">Your completed practice exams on this browser.</p></div></div>
+        <div class="stats-grid result-stats">
+          <article class="stat-card"><div class="stat-icon green">✓</div><div><span>Completed Exams</span><strong id="resultTotal">0</strong></div></article>
+          <article class="stat-card"><div class="stat-icon purple">★</div><div><span>Average Score</span><strong id="resultAverage">—</strong></div></article>
+        </div>
+        <div class="panel table-panel"><div class="panel-heading"><h3>Result History</h3><button class="text-button" id="clearResults">Clear history</button></div><div class="table-scroll"><table><thead><tr><th>SUBJECT</th><th>DATE</th><th>SCORE</th><th>GRADE</th></tr></thead><tbody id="resultRows"></tbody></table></div><p class="empty-state" id="emptyResults">No exams completed yet. Start a practice exam to see your results here.</p></div>
+      </section>
+
+      <section class="page-section" id="exam">
+        <div class="exam-top"><button class="back-link" id="exitExam">← Back to subjects</button><div class="timer-box"><span>TIME REMAINING</span><strong id="examTimer">05:00</strong></div></div>
+        <div class="exam-layout"><div class="panel question-panel"><div class="question-meta"><span id="examSubject">Mathematics</span><span id="questionProgress">Question 1 of 5</span></div><div class="progress-track"><div id="questionProgressBar"></div></div><h2 id="questionText">Question text</h2><div class="options-list" id="optionsList"></div><div class="question-actions"><button class="btn btn-outline" id="prevQuestion">← Previous</button><button class="btn btn-primary" id="nextQuestion">Next question →</button><button class="btn btn-success hidden" id="submitExam">Submit exam ✓</button></div></div><aside class="panel exam-info"><p class="section-kicker">EXAM GUIDE</p><h3>Instructions</h3><ul><li>Choose one answer for each question.</li><li>You can move between questions.</li><li>The exam submits automatically when time ends.</li><li>Explanations appear with your result.</li></ul><div class="exam-progress"><strong id="answeredCount">0</strong><span>of 5 answered</span></div></aside></div>
+      </section>
+
+      <section class="page-section" id="review">
+        <div class="page-heading"><div><p class="section-kicker">EXAM COMPLETED</p><h2>Your Practice Result</h2><p class="muted">Review your score and learn from each explanation.</p></div><button class="btn btn-primary" data-go="subjects">Try another subject</button></div>
+        <div class="result-hero panel"><div class="score-ring" id="scoreRing"><div><strong id="scorePercent">0%</strong><span>YOUR SCORE</span></div></div><div><p class="section-kicker">PERFORMANCE SUMMARY</p><h2 id="resultTitle">Well done!</h2><p class="muted" id="resultSummary"></p><div class="result-chips"><span id="correctChip">0 Correct</span><span id="wrongChip">0 Incorrect</span></div></div></div>
+        <div class="review-list" id="reviewList"></div>
+      </section>
+
+      <footer class="footer"><span>© <span id="year"></span> CASPAM Exam Portal</span><span>Centre for Advanced Studies in Pure and Applied Mathematics</span></footer>
+    </main>
+  </div>
+
+  <div class="modal-backdrop hidden" id="profileModal"><div class="modal"><button class="modal-close" id="closeModal">×</button><p class="section-kicker">STUDENT DETAILS</p><h2>Set up your profile</h2><p class="muted">Enter your details to personalize the dashboard.</p><form id="profileForm"><label>Student name<input id="studentName" type="text" placeholder="Enter your full name" required></label><label>Registration / Roll number<input id="rollNumber" type="text" placeholder="e.g. CASPAM-001"></label><button class="btn btn-primary full-width" type="submit">Save profile</button></form></div></div>
+  <script src="script.js"></script>
+</body>
+</html>
